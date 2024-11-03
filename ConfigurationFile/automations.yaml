@@ -1,0 +1,1179 @@
+- id: '1678654415727'
+  alias: Sex
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 8c58d0b1d1f6c3a24e09fd4969e6d052
+    entity_id: light.switchbedroom_light_2
+    domain: light
+  condition: []
+  action:
+  - service: media_player.play_media
+    target:
+      entity_id: media_player.volumio
+    data:
+      media_content_id: '{"service": "mpd", "type": "song", "title": "sexual mix volume
+        iv 6179529574083473048", "artist": "", "album": "", "uri": "music-library/USB/KINGSTON/Muza/sexual_mix_volume_iv_6179529574083473048.mp3",
+        "albumart": "/albumart?cacheid=530&path=%2Fmnt%2FUSB%2FKINGSTON%2FMuza&icon=music&metadata=false"}'
+      media_content_type: music
+    metadata:
+      title: sexual mix volume iv 6179529574083473048
+      thumbnail: /api/media_player_proxy/media_player.volumio/browse_media/music/-6216445972597044948?token=19fd2a4671e22631254e9fa242d6beaa5dd92ef81a490152126c36dba3498547
+      media_class: track
+      children_media_class: directory
+      navigateIds:
+      - {}
+      - media_content_type: music
+        media_content_id: '{"albumart": "/albumart?sourceicon=music_service/mpd/musiclibraryicon.png",
+          "name": "Music Library", "uri": "music-library", "plugin_type": "music_service",
+          "plugin_name": "mpd"}'
+      - media_content_type: music
+        media_content_id: '{"type": "folder", "title": "USB", "service": "mpd", "albumart":
+          "/albumart?cacheid=530&path=&icon=usb&metadata=false", "uri": "music-library/USB"}'
+      - media_content_type: music
+        media_content_id: '{"type": "remdisk", "title": "KINGSTON", "service": "mpd",
+          "albumart": "/albumart?cacheid=530&path=%2Fmnt%2FUSB%2FKINGSTON&icon=folder-o&metadata=false",
+          "uri": "music-library/USB/KINGSTON"}'
+      - media_content_type: music
+        media_content_id: '{"type": "folder", "title": "Muza", "service": "mpd", "albumart":
+          "/albumart?cacheid=530&path=%2Fmnt%2FUSB%2FKINGSTON%2FMuza&icon=folder-o&metadata=false",
+          "uri": "music-library/USB/KINGSTON/Muza"}'
+  - type: turn_on
+    device_id: e1858e1dbb29e7455755de3b3bb2de4d
+    entity_id: light.ledrgbbedroomlocal
+    domain: light
+  - service: media_player.volume_set
+    data:
+      volume_level: 0.6
+    target:
+      entity_id: media_player.volumio
+  - type: turn_off
+    device_id: 8c58d0b1d1f6c3a24e09fd4969e6d052
+    entity_id: light.switchbedroom_light_2
+    domain: light
+  mode: single
+- id: '1678655297984'
+  alias: Sex off
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 8c58d0b1d1f6c3a24e09fd4969e6d052
+    entity_id: light.switchbedroom_light_3
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: f3072ea13383be3734aa56bb0f808bed
+    entity_id: light.ledlightsrgb
+    domain: light
+  - service: media_player.volume_mute
+    data:
+      is_volume_muted: true
+    target:
+      entity_id: media_player.volumio
+  mode: single
+- id: '1679034819455'
+  alias: BeckToHome
+  description: ''
+  trigger:
+  - platform: geo_location
+    source: ''
+    zone: zone.home
+    event: enter
+  condition: []
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: W domu
+      title: Mąż w domu
+  mode: single
+- id: '1679317073074'
+  alias: 'Mąż wrócił '
+  description: "Powrót do domu  \n"
+  trigger:
+  - platform: geo_location
+    source: ''
+    zone: zone.home
+    event: enter
+  condition:
+  - condition: device
+    device_id: a824078812f8e79aff7ef64cbec0f6b0
+    domain: device_tracker
+    entity_id: device_tracker.bialykiel
+    type: is_home
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Mąż w Domu
+      title: Wróciłem
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Wróciłem
+      message: 'Mąż w domu '
+  mode: single
+- id: '1679683348317'
+  alias: LedSalonOffLocal
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light
+    domain: light
+  - platform: device
+    type: turned_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_2
+    domain: light
+  - platform: device
+    type: turned_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_3
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light
+    domain: light
+  - type: turn_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_2
+    domain: light
+  - type: turn_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_3
+    domain: light
+  - type: turn_off
+    device_id: e1d41576e5f9c89e8fdee659ac165865
+    entity_id: light.ledsalonwall1_forceonlight_2
+    domain: light
+  - type: turn_off
+    device_id: 78ade00eee9fccfe39e3727215828db1
+    entity_id: light.ledsalonwall2_light_2
+    domain: light
+  - type: turn_off
+    device_id: 4b804f2f2d50c9f471ccffd805fe2249
+    entity_id: light.ledsalonwall3_forceonlight
+    domain: light
+  - type: turn_off
+    device_id: 8faf1eb320dde10205527ba18cdac175
+    entity_id: light.ewelight_zb_cl01_forceonlight_2
+    domain: light
+  - type: turn_off
+    device_id: b5d8f9c134cfb0f98cbed54078c9b25e
+    entity_id: light.ledsalonwall5local
+    domain: light
+  - type: turn_off
+    device_id: b7fdf30e4b26e1be186837d3c7d8f762
+    entity_id: light.ewelight_zb_cl01_forceonlight
+    domain: light
+  - type: turn_off
+    device_id: 3c5c4bfd1338e0286c2ae1cb836e15d3
+    entity_id: light.junyu_zb_rgbcw_light
+    domain: light
+  - type: turn_off
+    device_id: eabc6f6e914b599d41d2a5d71f919037
+    entity_id: light.ledsalonwindow3_light_2
+    domain: light
+  - type: turn_off
+    device_id: d9aa9cd0be2de991cefe01c01a26a86a
+    entity_id: light.ledsalonwindow4_forceonlight_2
+    domain: light
+  - type: turn_off
+    device_id: 3e8a336020986ec349b1b8f3b27bece1
+    entity_id: light.ledsalonwindow5_light_2
+    domain: light
+  - type: turn_off
+    device_id: 56faf926fdb8aa6f5ecd027d9d95e769
+    entity_id: light.ledsalonwindow6_light_3
+    domain: light
+  - type: turn_off
+    device_id: 437827c8f1f3f6724d1680c57b557ec7
+    entity_id: light.ledsalonwindow7_forceonlight_2
+    domain: light
+  mode: single
+- id: '1679683416937'
+  alias: LedSalonMiniBrightnessLocal
+  description: Turn all Leds on minimum brightness
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_3
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: b7fdf30e4b26e1be186837d3c7d8f762
+    entity_id: light.ewelight_zb_cl01_forceonlight
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: 3c5c4bfd1338e0286c2ae1cb836e15d3
+    entity_id: light.junyu_zb_rgbcw_light
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: eabc6f6e914b599d41d2a5d71f919037
+    entity_id: light.ledsalonwindow3_light_2
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: d9aa9cd0be2de991cefe01c01a26a86a
+    entity_id: light.ledsalonwindow4_forceonlight_2
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: 3e8a336020986ec349b1b8f3b27bece1
+    entity_id: light.ledsalonwindow5_light_2
+    brightness_pct: 10
+    domain: light
+  - type: turn_on
+    device_id: 56faf926fdb8aa6f5ecd027d9d95e769
+    entity_id: light.ledsalonwindow6_light_3
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: 437827c8f1f3f6724d1680c57b557ec7
+    entity_id: light.ledsalonwindow7_forceonlight_2
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: e1d41576e5f9c89e8fdee659ac165865
+    entity_id: light.ledsalonwall1_forceonlight_2
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: 78ade00eee9fccfe39e3727215828db1
+    entity_id: light.ledsalonwall2_light_2
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: 4b804f2f2d50c9f471ccffd805fe2249
+    entity_id: light.ledsalonwall3_forceonlight
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: 8faf1eb320dde10205527ba18cdac175
+    entity_id: light.ewelight_zb_cl01_forceonlight_2
+    domain: light
+    brightness_pct: 10
+  - type: turn_on
+    device_id: b5d8f9c134cfb0f98cbed54078c9b25e
+    entity_id: light.ledsalonwall5local
+    domain: light
+    brightness_pct: 10
+  mode: single
+- id: '1679683462705'
+  alias: LedSalonFullBrightnessLocal
+  description: Turn on All Leds on Salon 100% Brightness
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: b7fdf30e4b26e1be186837d3c7d8f762
+    entity_id: light.ewelight_zb_cl01_forceonlight
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 3c5c4bfd1338e0286c2ae1cb836e15d3
+    entity_id: light.junyu_zb_rgbcw_light
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: eabc6f6e914b599d41d2a5d71f919037
+    entity_id: light.ledsalonwindow3_light_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: d9aa9cd0be2de991cefe01c01a26a86a
+    entity_id: light.ledsalonwindow4_forceonlight_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 3e8a336020986ec349b1b8f3b27bece1
+    entity_id: light.ledsalonwindow5_light_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 56faf926fdb8aa6f5ecd027d9d95e769
+    entity_id: light.ledsalonwindow6_light_3
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 437827c8f1f3f6724d1680c57b557ec7
+    entity_id: light.ledsalonwindow7_forceonlight_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: e1d41576e5f9c89e8fdee659ac165865
+    entity_id: light.ledsalonwall1_forceonlight_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 78ade00eee9fccfe39e3727215828db1
+    entity_id: light.ledsalonwall2_light_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 4b804f2f2d50c9f471ccffd805fe2249
+    entity_id: light.ledsalonwall3_forceonlight
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: 8faf1eb320dde10205527ba18cdac175
+    entity_id: light.ewelight_zb_cl01_forceonlight_2
+    domain: light
+    brightness_pct: 100
+  - type: turn_on
+    device_id: b5d8f9c134cfb0f98cbed54078c9b25e
+    entity_id: light.ledsalonwall5local
+    domain: light
+    brightness_pct: 100
+  mode: single
+- id: '1679683581575'
+  alias: StartTvNetflix
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: ca1c91c5d497c1699d659960d0857796
+    entity_id: light.switchsalon2l_light
+    domain: light
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.ledsalonoff
+    metadata: {}
+  - type: turn_on
+    device_id: 3bc2f71398d5838bbc264ce5aff80839
+    entity_id: switch.tz3000_w0qqde0g_ts011f_switch
+    domain: switch
+  - service: scene.turn_on
+    target:
+      entity_id: scene.tv_netflix
+    metadata: {}
+  mode: single
+- id: '1679683918790'
+  alias: LedSalonMiddleBrigthnessLocal
+  description: Turn All Leds on 50% of brightness
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_2
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: b7fdf30e4b26e1be186837d3c7d8f762
+    entity_id: light.ewelight_zb_cl01_forceonlight
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 3c5c4bfd1338e0286c2ae1cb836e15d3
+    entity_id: light.junyu_zb_rgbcw_light
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: eabc6f6e914b599d41d2a5d71f919037
+    entity_id: light.ledsalonwindow3_light_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: d9aa9cd0be2de991cefe01c01a26a86a
+    entity_id: light.ledsalonwindow4_forceonlight_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 3e8a336020986ec349b1b8f3b27bece1
+    entity_id: light.ledsalonwindow5_light_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 56faf926fdb8aa6f5ecd027d9d95e769
+    entity_id: light.ledsalonwindow6_light_3
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 437827c8f1f3f6724d1680c57b557ec7
+    entity_id: light.ledsalonwindow7_forceonlight_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: e1d41576e5f9c89e8fdee659ac165865
+    entity_id: light.ledsalonwall1_forceonlight_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 78ade00eee9fccfe39e3727215828db1
+    entity_id: light.ledsalonwall2_light_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 4b804f2f2d50c9f471ccffd805fe2249
+    entity_id: light.ledsalonwall3_forceonlight
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: 8faf1eb320dde10205527ba18cdac175
+    entity_id: light.ewelight_zb_cl01_forceonlight_2
+    domain: light
+    brightness_pct: 50
+  - type: turn_on
+    device_id: b5d8f9c134cfb0f98cbed54078c9b25e
+    entity_id: light.ledsalonwall5local
+    domain: light
+    brightness_pct: 50
+  mode: single
+- id: '1679762687287'
+  alias: LedCorridorOnLocal
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 33340e6fc530962107f2d6449dd97ae5
+    entity_id: light.switchcorridorbathroom_light
+    domain: light
+  - platform: device
+    type: turned_on
+    device_id: 0c57dacbbeb2928fe9cc82a130df4b4a
+    entity_id: light.switchcorridormirror_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: e581d9d47ead3c6d6bbceb4df716b5a2
+    entity_id: light.ledcorridor_forceonlight
+    domain: light
+  - type: turn_on
+    device_id: 0c57dacbbeb2928fe9cc82a130df4b4a
+    entity_id: light.switchcorridormirror_light
+    domain: light
+  - type: turn_on
+    device_id: 1aeb340afe6e000d3db95f290d42d9ba
+    entity_id: light.ledcorridormirror_forceonlight
+    domain: light
+  - type: turn_on
+    device_id: 33340e6fc530962107f2d6449dd97ae5
+    entity_id: light.switchcorridorbathroom_light
+    domain: light
+  - type: turn_on
+    device_id: b02fb471416a7724f02b22b96a1fa942
+    entity_id: light.ledcorridorbathlocal
+    domain: light
+  mode: single
+- id: '1679767213612'
+  alias: LedCorridorOffLocal
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 33340e6fc530962107f2d6449dd97ae5
+    entity_id: light.switchcorridorbathroom_light
+    domain: light
+  - platform: device
+    type: turned_off
+    device_id: 0c57dacbbeb2928fe9cc82a130df4b4a
+    entity_id: light.switchcorridormirror_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: e581d9d47ead3c6d6bbceb4df716b5a2
+    entity_id: light.ledcorridor_forceonlight
+    domain: light
+  - type: turn_off
+    device_id: 1aeb340afe6e000d3db95f290d42d9ba
+    entity_id: light.ledcorridormirror_forceonlight
+    domain: light
+  - type: turn_off
+    device_id: 33340e6fc530962107f2d6449dd97ae5
+    entity_id: light.switchcorridorbathroom_light
+    domain: light
+  - type: turn_off
+    device_id: 0c57dacbbeb2928fe9cc82a130df4b4a
+    entity_id: light.switchcorridormirror_light
+    domain: light
+  - type: turn_off
+    device_id: b02fb471416a7724f02b22b96a1fa942
+    entity_id: light.ledcorridorbathlocal
+    domain: light
+  mode: single
+- id: '1679770257968'
+  alias: LedCorridorDoorOpen
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: b065499cfb7cdfcf41872d0732d36846
+    entity_id: binary_sensor.doorsensorcorridor_iaszone
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 1aeb340afe6e000d3db95f290d42d9ba
+    entity_id: light.ledcorridormirror_forceonlight
+    domain: light
+  - delay:
+      hours: 0
+      minutes: 5
+      seconds: 10
+      milliseconds: 0
+  - type: turn_off
+    device_id: 1aeb340afe6e000d3db95f290d42d9ba
+    entity_id: light.ledcorridormirror_forceonlight
+    domain: light
+  mode: single
+- id: '1679871220374'
+  alias: PowerOnMorningShift
+  description: ''
+  trigger:
+  - platform: time
+    at: 06:50:00
+  condition: []
+  action:
+  - type: turn_on
+    device_id: e8a8c87d428fd84b1eb7f6db1e3e1293
+    entity_id: switch.tz3000_w0qqde0g_ts011f_switch_2
+    domain: switch
+  mode: single
+- id: '1679952830211'
+  alias: StopTvSalon
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: ca1c91c5d497c1699d659960d0857796
+    entity_id: light.switchsalon2l_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 7283a3f582987c19832c6f36ee8cc470
+    entity_id: remote.twsalon
+    domain: remote
+  mode: single
+- id: '1680203884320'
+  alias: LampWallKolesieOn
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: dd4a399d18bc59e970b10a54dd38f593
+    entity_id: light.switchkolesie_light_2
+    domain: light
+  - platform: device
+    type: turned_on
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  - type: turn_on
+    device_id: dd4a399d18bc59e970b10a54dd38f593
+    entity_id: light.switchkolesie_light_2
+    domain: light
+  mode: single
+- id: '1680204132990'
+  alias: LampWallKolesieOff
+  description: 'Turn off lamp located on Wall '
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: dd4a399d18bc59e970b10a54dd38f593
+    entity_id: light.switchkolesie_light_2
+    domain: light
+  - platform: device
+    type: turned_off
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  - type: turn_off
+    device_id: dd4a399d18bc59e970b10a54dd38f593
+    entity_id: light.switchkolesie_light_2
+    domain: light
+  mode: single
+- id: '1680874280097'
+  alias: 'DoorCorridorOpened '
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: b065499cfb7cdfcf41872d0732d36846
+    entity_id: binary_sensor.doorsensorcorridor_iaszone
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      message: 'Drzwi otwarte '
+      title: Otwarte
+  - service: notify.mobile_app_bialykiel
+    data:
+      message: 'Drzwi otwarte '
+      title: Otwarte
+  mode: single
+- id: '1680874475195'
+  alias: DoorCorridorClosed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: b065499cfb7cdfcf41872d0732d36846
+    entity_id: binary_sensor.doorsensorcorridor_iaszone
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_bialykiel
+    data:
+      message: 'Drzwi zamknięte '
+      title: Zamknięte
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Zamknięte
+      message: 'Drzwi zamknięte '
+  mode: single
+- id: '1681246383776'
+  alias: DoorKolesieOpened
+  description: Obły notification
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 430f968694340efdb4caf2e2b8b8bfee
+    entity_id: binary_sensor.doorsensorkolesie_iaszone
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      message: 'Drzwi kolesie otwarte '
+      title: 'Kolesie nadchodzą '
+  - service: notify.mobile_app_bialykiel
+    data:
+      message: 'Drzwi kolesie otwarte '
+      title: 'Kolesie nadchodzą '
+  mode: single
+- id: '1681246479712'
+  alias: DoorKolesieClosed
+  description: Only notification
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 430f968694340efdb4caf2e2b8b8bfee
+    entity_id: binary_sensor.doorsensorkolesie_iaszone
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      message: Drzwi kolesie zamknięte
+      title: 'Kolesie w okopach '
+  - service: notify.mobile_app_bialykiel
+    data:
+      message: Drzwi kolesie zamknięte
+      title: 'Kolesie w okopach '
+  mode: single
+- id: '1681394937029'
+  alias: 'Żonka w domu '
+  description: "Powrót do domu  \n"
+  trigger:
+  - platform: geo_location
+    source: ''
+    zone: zone.home
+    event: enter
+  condition:
+  - condition: device
+    device_id: d11c871bc6be35b17d720cc2c71c7f2c
+    domain: device_tracker
+    entity_id: device_tracker.iphoneika_2
+    type: is_home
+  action:
+  - service: notify.mobile_app_iphone
+    data:
+      message: Żonka  w Domu
+      title: Wróciłam
+  mode: single
+- id: '1683887370525'
+  alias: LedSalonColdLocal
+  description: Set all leds on cold light
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_3
+    domain: light
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.ledsaloncold
+    metadata: {}
+  mode: single
+- id: '1683888101765'
+  alias: LedSalonWarm
+  description: Set all leds on Warm light
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light
+    domain: light
+  condition: []
+  action:
+  - service: scene.turn_on
+    target:
+      entity_id: scene.ledsalonwarm
+    metadata: {}
+  mode: single
+- id: '1683888433662'
+  alias: HumidityBathRoomAbove70StartFanII
+  description: Start Fan on second level above 70% of humidity
+  trigger:
+  - type: humidity
+    platform: device
+    device_id: 5152b223d47197b6b9f14f67cf09807a
+    entity_id: sensor.tempbathroom_humidity
+    domain: sensor
+    above: 65
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 74be5353dbd91170d5a7bed61b01e463
+    entity_id: light.fanbathroom_light_2
+    domain: light
+  mode: single
+- id: '1683890526618'
+  alias: HumidityBathRoomBelow70StopFanII
+  description: Start Fan on first level and turn off fan II level below 70% of humidity
+  trigger:
+  - type: humidity
+    platform: device
+    device_id: 5152b223d47197b6b9f14f67cf09807a
+    entity_id: sensor.tempbathroom_humidity
+    domain: sensor
+    below: 65
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 74be5353dbd91170d5a7bed61b01e463
+    entity_id: light.fanbathroom_light_2
+    domain: light
+  - type: turn_on
+    device_id: 74be5353dbd91170d5a7bed61b01e463
+    entity_id: light.fanbathroom_light
+    domain: light
+  mode: single
+- id: '1684442844094'
+  alias: LampKolesieOffSunrise
+  description: 'Turn Off lamp at Sunrise '
+  trigger:
+  - platform: sun
+    event: sunrise
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  mode: single
+- id: '1691413607242'
+  alias: LightOnWardrobeDoorOpened
+  description: ''
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 4364cc173d0edbb9ee4ff299aa69ad59
+    entity_id: binary_sensor.doorsensorwardrobe_opening
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: ac6733905e0afce3e96f43c0e87c2d7f
+    entity_id: light.switchwardrobe_light
+    domain: light
+  mode: single
+- id: '1691413651526'
+  alias: LightOffWardrobeDoorClosed
+  description: ''
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 4364cc173d0edbb9ee4ff299aa69ad59
+    entity_id: binary_sensor.doorsensorwardrobe_opening_2
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: ac6733905e0afce3e96f43c0e87c2d7f
+    entity_id: light.switchwardrobe_light
+    domain: light
+  mode: single
+- id: '1691749629476'
+  alias: DoorWardrobeOpen
+  description: Turn light on Wardrobe
+  trigger:
+  - type: opened
+    platform: device
+    device_id: 4364cc173d0edbb9ee4ff299aa69ad59
+    entity_id: binary_sensor.doorsensorwardrobe_opening
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: ac6733905e0afce3e96f43c0e87c2d7f
+    entity_id: light.switchwardrobe_light
+    domain: light
+  mode: single
+- id: '1691760236137'
+  alias: PirWcDetectionMotion
+  description: Turn on light on WC
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 4ad0b73be325ab53d0f7b2396029f750
+    entity_id: binary_sensor.pirwc_iaszone
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: d499f3c48cae879d0d8046f580b0f1c6
+    entity_id: light.miniswitchwclamp_light_2
+    domain: light
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: d499f3c48cae879d0d8046f580b0f1c6
+    entity_id: light.miniswitchwclamp_light_2
+    domain: light
+  mode: single
+- id: '1691818414306'
+  alias: PirBathRoomDetectingMotion
+  description: Turn on light in BathRoom
+  trigger:
+  - type: motion
+    platform: device
+    device_id: 1883243a6b834bf715774c6081c205a2
+    entity_id: binary_sensor.pircellingbathroom_motion
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 3e8d8f2d2b38f1593049f379c1afbb90
+    entity_id: light.miniswitchbathroomlamp_light_2
+    domain: light
+  - delay:
+      hours: 0
+      minutes: 10
+      seconds: 0
+      milliseconds: 0
+  - type: turn_off
+    device_id: 3e8d8f2d2b38f1593049f379c1afbb90
+    entity_id: light.miniswitchbathroomlamp_light_2
+    domain: light
+  mode: single
+- id: '1696535479695'
+  alias: TurnOffCellingLamp
+  description: ''
+  trigger:
+  - platform: device
+    type: changed_states
+    device_id: 76f2218c402b244e78e7362762fd32ae
+    entity_id: light.switchbathroom_light
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 3e8d8f2d2b38f1593049f379c1afbb90
+    entity_id: light.miniswitchbathroomlamp_light_2
+    domain: light
+  mode: single
+- id: '1696535545864'
+  alias: TurnOffCellingLampWC
+  description: ''
+  trigger:
+  - platform: device
+    type: changed_states
+    device_id: 12adf242e5aac2d39eb0c54b6de2847d
+    entity_id: light.switchwc_light_3
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: d499f3c48cae879d0d8046f580b0f1c6
+    entity_id: light.miniswitchwclamp_light_2
+    domain: light
+  mode: single
+- id: '1696791462832'
+  alias: LedoffRemoteSwitchBed
+  description: ''
+  trigger:
+  - device_id: 4211552f497a70084154f10b39a5b6d9
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_1
+  condition: []
+  action:
+  - type: turn_off
+    device_id: e1858e1dbb29e7455755de3b3bb2de4d
+    entity_id: light.ledrgbbedroomlocal
+    domain: light
+  mode: single
+- id: '1698186213847'
+  alias: PowerOnAfternoonShift
+  description: ''
+  trigger:
+  - platform: time
+    at: '14:50:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: e8a8c87d428fd84b1eb7f6db1e3e1293
+    entity_id: switch.tz3000_w0qqde0g_ts011f_switch_2
+    domain: switch
+  mode: single
+- id: '1703268591029'
+  alias: LampChristmasOn
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_on
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_2
+    domain: light
+  condition: []
+  action:
+  - type: turn_on
+    device_id: 3bc2f71398d5838bbc264ce5aff80839
+    entity_id: switch.tz3000_w0qqde0g_ts011f_switch
+    domain: switch
+  mode: single
+- id: '1703268628581'
+  alias: LampChristmasOff
+  description: ''
+  trigger:
+  - platform: device
+    type: turned_off
+    device_id: 98b1d0e57e18d1f7fee47f68a3896f42
+    entity_id: light.switchsalonl_light_2
+    domain: light
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 3bc2f71398d5838bbc264ce5aff80839
+    entity_id: switch.tz3000_w0qqde0g_ts011f_switch
+    domain: switch
+  mode: single
+- id: '1706278183918'
+  alias: LampKolesieTurnOn
+  description: ''
+  trigger:
+  - device_id: 7428107fe5195262ec273eccceaef155
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_1
+  - device_id: 6a7ad7f28e86320b64ffc7aca2693d5c
+    domain: zha
+    platform: device
+    type: remote_button_short_press
+    subtype: button_1
+  condition:
+  - condition: or
+    conditions: []
+    enabled: false
+  action:
+  - type: turn_on
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  mode: single
+- id: '1706278342174'
+  alias: LampKolesieTurnOff
+  description: ''
+  trigger:
+  - device_id: 7428107fe5195262ec273eccceaef155
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: button_1
+  - device_id: 6a7ad7f28e86320b64ffc7aca2693d5c
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: button_1
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 80184671e076537ed2e7e88a21d829d4
+    entity_id: light.tz3000_46t1rvdu_ts0001_light
+    domain: light
+  mode: single
+- id: '1707786525958'
+  alias: DetectSmoeKitchen
+  description: ''
+  trigger:
+  - type: smoke
+    platform: device
+    device_id: 095430694d6b723974be8c305b33b804
+    entity_id: binary_sensor.smokesensorkitchen_smoke
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_bialykiel
+    data:
+      title: Dym w Kuchni
+      message: Wykryto dym w kuchni, spr czy nie pali się
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Dym w Kuchni
+      message: Wykryto dym w kuchni, spr czy nie pali się
+  mode: single
+- id: '1707786608955'
+  alias: DetectSomkeWardrobe
+  description: ''
+  trigger:
+  - type: smoke
+    platform: device
+    device_id: 15115e4d8780f03359ef3dd5b6e3eae8
+    entity_id: binary_sensor.smokesensorwardrobe_smoke
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_bialykiel
+    data:
+      title: Dym w Garderobie
+      message: Wykryto dym w Garderobie, spr czy nie pali się
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Dym w Garderobie
+      message: Wykryto dym w Garderobie, spr czy nie pali się
+  mode: single
+- id: '1707786840669'
+  alias: DetectWaterKitchen
+  description: ''
+  trigger:
+  - type: moist
+    platform: device
+    device_id: 40939157d451017098f6bf01bf065e4e
+    entity_id: binary_sensor.watersensorkitchen_moisture
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_bialykiel
+    data:
+      title: Woda w Kuchni
+      message: Wykryto wyciek wody w Kuchni, pod zlewem.
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Woda w Kuchni
+      message: Wykryto wyciek wody w Kuchni, pod zlewem.
+  mode: single
+- id: '1709309516770'
+  alias: StopDetectingSmokeWardrobe
+  description: Potwierdzono ręcznie brak dymu
+  trigger:
+  - type: no_smoke
+    platform: device
+    device_id: 15115e4d8780f03359ef3dd5b6e3eae8
+    entity_id: binary_sensor.smokesensorwardrobe_smoke
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_bialykiel
+    data:
+      message: Ręcznie potwierdzono brak dymu
+      title: Brak dymu w Garderobie
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Brak dymu w Garderobie
+      message: Ręcznie potwierdzono brak dymu
+  mode: single
+- id: '1709309703681'
+  alias: StopDetectingSmokeWardrobe
+  description: Potwierdzono ręcznie brak dymu
+  trigger:
+  - type: no_smoke
+    platform: device
+    device_id: 095430694d6b723974be8c305b33b804
+    entity_id: binary_sensor.smokesensorkitchen_smoke
+    domain: binary_sensor
+  condition: []
+  action:
+  - service: notify.mobile_app_bialykiel
+    data:
+      message: Ręcznie potwierdzono brak dymu
+      title: Brak dymu w Kuchni
+  - service: notify.mobile_app_iphoneika_2
+    data:
+      title: Brak dymu w Kuchni
+      message: Ręcznie potwierdzono brak dymu
+  mode: single
+- id: '1718448304814'
+  alias: DoorWardrobeClosed
+  description: Turn light off Wardrobe
+  trigger:
+  - type: not_opened
+    platform: device
+    device_id: 4364cc173d0edbb9ee4ff299aa69ad59
+    entity_id: a3fa309eef072890493792c7358e15a2
+    domain: binary_sensor
+  condition: []
+  action:
+  - type: turn_off
+    device_id: ac6733905e0afce3e96f43c0e87c2d7f
+    entity_id: 642d9a33ec61d002adfad20a891a4037
+    domain: light
+  mode: single
+- id: '1725310456557'
+  alias: PowerOnLaptopOn14:00
+  description: ''
+  trigger:
+  - platform: time
+    at: '13:50:00'
+  condition: []
+  action:
+  - type: turn_on
+    device_id: e8a8c87d428fd84b1eb7f6db1e3e1293
+    entity_id: switch.tz3000_w0qqde0g_ts011f_switch_2
+    domain: switch
+  mode: single
+- id: '1726784428742'
+  alias: TurnOffAudioBwdRoom
+  description: ''
+  trigger:
+  - device_id: 7428107fe5195262ec273eccceaef155
+    domain: zha
+    platform: device
+    type: remote_button_double_press
+    subtype: button_1
+  condition: []
+  action:
+  - type: turn_off
+    device_id: 6347f98f4c7974daa4690f91d79780ea
+    entity_id: 8962c3e5bc104384b3774b109b6782d7
+    domain: switch
+  mode: single
